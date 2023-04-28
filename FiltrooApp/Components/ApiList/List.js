@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { FlatList, Text, View } from "react-native"
-import axios from "axios"
+import { FlatList, Text, View, Image, Button } from "react-native"
+import apiServices from "../../services/api.services"
 
 const List = () => {
 
@@ -13,18 +13,31 @@ const List = () => {
 
     const loadApiList = () => {
         setLoading(true)
-        const loadApiItems = async () => {
-            const response = await axios.get('https://api.tvmaze.com/shows?page=2&max=1');
-            setApiItems(response.data);
-        }
-        loadApiItems()
-        setLoading(false)
+        apiServices
+            .getAllItems()
+            .then(({ data }) => {
+                setLoading(false)
+                setApiItems(data)
+            })
     }
+
+
 
 
     const renderItem = ({ item }) => (
         <View>
             <Text>{item.name}</Text>
+            <Image
+                source={item.image.medium}
+                style={{ width: 200, height: 200 }}
+                resizeMode="contain"
+            />
+            <Button
+                onPress={() => console.log("clik!")}
+                title="Ver Detalles"
+                color="#841584"
+                accessibilityLabel="Learn more about this purple button"
+            />
         </View>
     )
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { FlatList, Text, View, Image, Button } from "react-native"
 import apiServices from "../../services/api.services"
 
-const List = () => {
+const List = ({ navigation }) => {
 
     const [apiItems, setApiItems] = useState([])
     const [loading, setLoading] = useState(false)
@@ -33,7 +33,7 @@ const List = () => {
                 resizeMode="contain"
             />
             <Button
-                onPress={() => console.log("clik!")}
+                onPress={() => navigation.navigate('Details')}
                 title="Ver Detalles"
                 color="#841584"
                 accessibilityLabel="Learn more about this purple button"

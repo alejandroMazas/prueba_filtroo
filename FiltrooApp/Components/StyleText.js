@@ -1,13 +1,12 @@
-import react from "react"
 import { Text, StyleSheet } from "react-native"
 import theme from "../theme.js"
 
 const styles = StyleSheet.create({
     text: {
-        color: theme.colors.body,
+        color: theme.colors.baseColor,
         fontSize: theme.fontSizes.body,
         fontWeight: theme.fontWeigths.normal,
-        paddingBottom: 5
+        paddingBottom: 10
     },
     tittle: {
         color: theme.colors.textPrimary,

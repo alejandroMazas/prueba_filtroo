@@ -1,16 +1,43 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
-import List from '../Components/List'
+import { View } from 'react-native'
+import List from '../Components/ShowList'
+import apiServices from "../services/api.services"
+import { useEffect, useState } from 'react'
 
 const ListPage = ({ navigation }) => {
+
+    const [shows, setShows] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [isRefreshing, setIsRefreshing] = useState(false)
+
+    useEffect(() => {
+        loadShows()
+    }, [])
+
+    const handleRefresh = async () => {
+        setIsRefreshing(true);
+        await loadShows()
+        setIsRefreshing(false);
+    };
+
+    const loadShows = async () => {
+        try {
+            setLoading(true)
+            const { data } = await apiServices.getShows()
+            setShows(data)
+            setLoading(false)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <View>
-            <Button
-                onPress={() => navigation.navigate('Details')}
-                title="Volver"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-            />
-            <List navigation={navigation} />
+            <List
+                navigation={navigation}
+                shows={shows}
+                loading={loading}
+                handleRefresh={handleRefresh}
+                isRefreshing={isRefreshing} />
         </View>
     )
 }

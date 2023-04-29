@@ -1,44 +1,20 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { FlatList, View, StyleSheet, RefreshControl } from "react-native"
-import apiServices from "../services/api.services"
 import Spinner from "./Spinner"
-import Item from "./Item"
+import Item from "./Show"
 
-const List = ({ navigation }) => {
-
-    const [apiItems, setApiItems] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [isRefreshing, setIsRefreshing] = useState(false)
-
-    useEffect(() => {
-        loadApiList()
-    }, [])
-
-    const loadApiList = () => {
-        setLoading(true)
-        apiServices
-            .getAllItems()
-            .then(({ data }) => {
-                setLoading(false)
-                setApiItems(data)
-            })
-    }
-
-    const handleRefresh = () => {
-        setIsRefreshing(true);
-        loadApiList();
-        setIsRefreshing(false);
-    };
+const ShowList = ({ navigation, loading, shows, handleRefresh, isRefreshing }) => {
 
     return (
         <View style={styles.background}>
             {
-
                 loading ?
                     <Spinner />
                     :
                     <FlatList
-                        data={apiItems}
+                        data={shows}
+                        // columnWrapperStyle={{ justifyContent: 'space-around' }}
+                        // numColumns={2}
                         renderItem={({ item }) => <Item navigation={navigation} item={item} />}
                         keyExtractor={item => item.id.toString()}
                         refreshControl={
@@ -59,4 +35,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default List
+export default ShowList

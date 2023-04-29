@@ -1,21 +1,21 @@
 import { createStackNavigator } from "@react-navigation/stack"
 import ListPage from "../Pages/ListPage"
-import DetailsPage from "../Pages/Detail"
+import DetailPage from "../Pages/DetailPage"
 import Home from "../Pages/HomePage"
 import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator()
 
-const AppRoutes = () => {
+const AppScreens = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={Home}></Stack.Screen>
                 <Stack.Screen name="List" component={ListPage}></Stack.Screen>
-                <Stack.Screen name="Details" component={DetailsPage}></Stack.Screen>
+                <Stack.Screen name="Details" component={DetailPage}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
 
-export default AppRoutes
+export default AppScreens

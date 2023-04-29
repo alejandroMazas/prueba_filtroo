@@ -1,12 +1,12 @@
 import TextStyles from "./StyleText"
 import { View, Image, Button, StyleSheet } from "react-native"
 
-const Item = ({ item, navigation }) => (
+const Show = ({ item, navigation }) => (
 
     <View style={styles.container}>
         <TextStyles fontSize="tittle">{item.name}</TextStyles>
         <TextStyles fontSize="subtittle">{item.rating.average}</TextStyles>
-        <TextStyles fontSize="description">{item.genres.toString()}</TextStyles>
+        <TextStyles fontSize="description">{item.genres.join(", ")}</TextStyles>
         <View style={styles.image}>
             <Image
                 source={item.image.medium}
@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
     image: {
         paddingBottom: 20,
         paddingTop: 15,
-        display: "flex",
-        alignSelf: "center"
+        display: 'flex',
+        alignSelf: 'center'
     }
 })
 
-export default Item
+export default Show

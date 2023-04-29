@@ -24,14 +24,19 @@ const List = ({ navigation }) => {
 
 
     const renderItem = ({ item }) => (
+
         <View style={styles.container}>
             <TextStyles fontSize="tittle">{item.name}</TextStyles>
-            <Image
-                source={item.image.medium}
-                style={{ width: 200, height: 200 }}
-                resizeMode="contain"
-            />
-            <Button
+            <TextStyles fontSize={"subtittle"}>{item.rating.average}</TextStyles>
+            <TextStyles fontSize={"description"}>{item.genres.toString()}</TextStyles>
+            <View style={styles.image}>
+                <Image
+                    source={item.image.medium}
+                    style={{ width: 400, height: 400 }}
+                    resizeMode="contain"
+                />
+            </View>
+            <Button style={styles.button}
                 onPress={() => navigation.navigate('Details')}
                 title="Ver Detalles"
                 color="#841584"
@@ -41,25 +46,32 @@ const List = ({ navigation }) => {
     )
 
     const styles = StyleSheet.create({
+        background: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            backgroundColor: 'black',
+        },
         container: {
             marginTop: 10,
             padding: 30,
             paddingBottom: 10,
             paddingTop: 10,
-            backgroundColor: 'black'
+            backgroundColor: 'black',
         },
-        strong: {
-            color: '#39FF33',
-            fontWeight: 'bold',
-            marginBottom: 10
+        image: {
+            paddingBottom: 20,
+            paddingTop: 15,
+            display: "flex",
+            alignSelf: "center"
         }
     })
 
     return (
-        <View style={styles.container}>
+        <View style={styles.background}>
             {
                 loading ?
-                    <Text>...Loading</Text>
+                    <TextStyles fontSize={"tittle"}>...Loading</TextStyles>
                     :
 
                     <FlatList

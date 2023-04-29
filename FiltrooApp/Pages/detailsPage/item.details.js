@@ -23,8 +23,30 @@ const DetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+    // const renderItem = ({ item }) => (
+
+    //     <View style={styles.container}>
+    //         <TextStyles fontSize="tittle">{item.name}</TextStyles>
+    //         <TextStyles fontSize={"subtittle"}>{item.rating.average}</TextStyles>
+    //         <TextStyles fontSize={"description"}>{item.genres.toString()}</TextStyles>
+    //         <Image
+    //             source={item.image.medium}
+    //             style={{ width: 200, height: 200 }}
+    //             resizeMode="contain"
+    //         />
+    //         <Button
+    //             onPress={() => navigation.navigate('Details')}
+    //             title="Ver Detalles"
+    //             color="#841584"
+    //             accessibilityLabel="Learn more about this purple button"
+    //         />
+    //     </View>
+    // )
+
     return (
-        <Text>pagina de detalles</Text>
+        <View>
+            <Text>pagina de detalles</Text>
+        </View>
     )
 }
 

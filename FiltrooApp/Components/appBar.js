@@ -1,7 +1,7 @@
 import react from "react";
 import { View, StyleSheet } from "react-native";
-import TextStyles from "../StyleText";
-import theme from "../../theme";
+import TextStyles from "./StyleText";
+import theme from "../theme";
 
 const AppBar = () => {
     return (

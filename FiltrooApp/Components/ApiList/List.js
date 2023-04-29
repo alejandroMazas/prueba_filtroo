@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { FlatList, Text, View, Image, Button, StyleSheet } from "react-native"
 import apiServices from "../../services/api.services"
 import TextStyles from "../StyleText"
+import Spinner from "../Spinner/Spinner"
 
 const List = ({ navigation }) => {
 
@@ -71,7 +72,7 @@ const List = ({ navigation }) => {
         <View style={styles.background}>
             {
                 loading ?
-                    <TextStyles fontSize={"tittle"}>...Loading</TextStyles>
+                    <Spinner />
                     :
 
                     <FlatList

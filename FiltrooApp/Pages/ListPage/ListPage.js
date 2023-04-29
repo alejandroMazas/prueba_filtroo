@@ -4,7 +4,6 @@ import List from '../../Components/ApiList/List'
 const ListPage = () => {
     return (
         <View>
-            <Text>Pagina de la lista</Text>
             <List />
         </View>
     )

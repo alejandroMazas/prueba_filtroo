@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { FlatList, Text, View, Image, Button, StyleSheet } from "react-native"
 import apiServices from "../../services/api.services"
+import TextStyles from "../StyleText"
 
 const List = ({ navigation }) => {
 
@@ -22,11 +23,9 @@ const List = ({ navigation }) => {
     }
 
 
-
-
     const renderItem = ({ item }) => (
         <View style={styles.container}>
-            <Text style={styles.strong}>{item.name}</Text>
+            <TextStyles fontSize="tittle">{item.name}</TextStyles>
             <Image
                 source={item.image.medium}
                 style={{ width: 200, height: 200 }}
@@ -47,16 +46,17 @@ const List = ({ navigation }) => {
             padding: 30,
             paddingBottom: 10,
             paddingTop: 10,
+            backgroundColor: 'black'
         },
         strong: {
-            color: '39FF33',
+            color: '#39FF33',
             fontWeight: 'bold',
             marginBottom: 10
         }
     })
 
     return (
-        <View>
+        <View style={styles.container}>
             {
                 loading ?
                     <Text>...Loading</Text>

@@ -1,7 +1,7 @@
 import { FlatList, Text, View, Image, Button } from "react-native"
 import apiServices from "../../services/api.services"
 
-const details = () => {
+const DetailsPage = () => {
 
     const [itemDetails, setItemDetails] = useState({})
     const [isLoadingDetails, setLoadingDetails] = useState(false)
@@ -28,4 +28,4 @@ const details = () => {
     )
 }
 
-export default details
+export default DetailsPage

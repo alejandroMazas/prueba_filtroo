@@ -1,8 +1,16 @@
-import { Text } from "react-native-web"
+import { Text, View, Button } from "react-native"
 
-const Home = () => {
+const Home = ({ navigation }) => {
     return (
-        <Text>Esta es la home</Text>
+        <View>
+            <Text>Esta es la home</Text>
+            <Button
+                onPress={() => navigation.navigate('List')}
+                title="Ir a la lista"
+                color="#841584"
+                accessibilityLabel="Learn more about this purple button"
+            />
+        </View>
     )
 }
 

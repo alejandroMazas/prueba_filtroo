@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { FlatList, Text, View, Image, Button } from "react-native"
+import { FlatList, Text, View, Image, Button, StyleSheet } from "react-native"
 import apiServices from "../../services/api.services"
 
 const List = ({ navigation }) => {
@@ -25,8 +25,8 @@ const List = ({ navigation }) => {
 
 
     const renderItem = ({ item }) => (
-        <View>
-            <Text>{item.name}</Text>
+        <View style={styles.container}>
+            <Text style={styles.strong}>{item.name}</Text>
             <Image
                 source={item.image.medium}
                 style={{ width: 200, height: 200 }}
@@ -40,6 +40,20 @@ const List = ({ navigation }) => {
             />
         </View>
     )
+
+    const styles = StyleSheet.create({
+        container: {
+            marginTop: 10,
+            padding: 30,
+            paddingBottom: 10,
+            paddingTop: 10,
+        },
+        strong: {
+            color: '39FF33',
+            fontWeight: 'bold',
+            marginBottom: 10
+        }
+    })
 
     return (
         <View>

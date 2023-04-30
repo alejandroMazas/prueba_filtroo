@@ -25,6 +25,13 @@ const styles = StyleSheet.create({
         fontSize: theme.fontSizes.subtittle,
         fontWeight: theme.fontWeigths.normal,
         paddingBottom: 10
+    },
+    logo: {
+        color: theme.colors.textPrimary,
+        fontSize: theme.fontSizes.Logo,
+        fontWeight: theme.fontWeigths.bold,
+        paddingBottom: 20,
+
     }
 
 })
@@ -36,6 +43,7 @@ export default function TextStyles({ children, color, fontSize, fontWeight, styl
         fontSize === "tittle" && styles.tittle,
         fontSize === "subtittle" && styles.subtittle,
         fontSize === "description" && styles.description,
+        fontSize === "logo" && styles.logo,
         style
     ]
     return (

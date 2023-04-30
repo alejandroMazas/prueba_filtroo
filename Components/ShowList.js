@@ -2,7 +2,13 @@ import { FlatList, View, StyleSheet, RefreshControl } from "react-native"
 import Spinner from "./Spinner"
 import Item from "./Show"
 
-const ShowList = ({ loading, shows, handleRefresh, isRefreshing }) => {
+const ShowList = ({ loading, shows, handleRefresh, isRefreshing, onEndReached }) => {
+
+    const renderFooter = () => {
+        return loading ? (
+            <Spinner />
+        ) : null;
+    };
 
     return (
         <View style={styles.background}>
@@ -16,6 +22,10 @@ const ShowList = ({ loading, shows, handleRefresh, isRefreshing }) => {
                         // numColumns={2}
                         renderItem={({ item }) => <Item item={item} />}
                         keyExtractor={item => item.id.toString()}
+                        onEndReached={onEndReached}
+                        onEndReachedThreshold={0.2}
+                        contentContainerStyle={{ flexGrow: 1 }}
+                        ListFooterComponent={renderFooter}
                         refreshControl={
                             <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
                         }

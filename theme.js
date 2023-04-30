@@ -8,7 +8,8 @@ const theme = {
         body: 14,
         tittle: 24,
         subtittle: 20,
-        small: 12
+        small: 12,
+        Logo: 40
     },
     fontWeigths: {
         normal: 400,

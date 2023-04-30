@@ -8,11 +8,11 @@ class apiItemsServices {
         })
     }
 
-    getShows = () => {
-        return this.axiosApp.get('/shows')
+    getShows(page) {
+        return this.axiosApp.get(`/shows?page=${page}`);
     }
-
-    getShow = (id) => {
+    
+    getShow(id) {
         return this.axiosApp.get(`/shows/${id}`)
     }
 }

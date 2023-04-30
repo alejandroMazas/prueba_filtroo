@@ -1,11 +1,14 @@
-import { View, StyleSheet, Image } from "react-native"
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native"
 import apiServices from "../services/api.services"
 import { useState, useEffect } from "react"
 import TextStyles from "../Components/StyleText"
 import Spinner from "../Components/Spinner"
+import { useNavigation } from "@react-navigation/native"
 
 
 const DetailPage = ({ route }) => {
+
+    const navigation = useNavigation()
 
     const [show, setShow] = useState({})
     const [isLoadingDetail, setLoadingDetail] = useState(false)
@@ -27,6 +30,10 @@ const DetailPage = ({ route }) => {
         }
     }
 
+    const clickableImage = () => {
+        navigation.navigate("Image")
+    }
+
     return (
         isLoadingDetail
             ?
@@ -34,11 +41,13 @@ const DetailPage = ({ route }) => {
             :
             <View style={styles.container}>
                 <View style={styles.image}>
-                    <Image
-                        source={show?.image?.medium}
-                        style={{ width: 400, height: 400 }}
-                        resizeMode="contain"
-                    />
+                    <TouchableOpacity onPress={clickableImage}>
+                        <Image
+                            source={show?.image?.medium}
+                            style={{ width: 400, height: 400 }}
+                            resizeMode="contain"
+                        />
+                    </TouchableOpacity>
                 </View>
                 {show && (
                     <>
@@ -70,6 +79,9 @@ const styles = StyleSheet.create({
         display: "flex",
         alignSelf: "center"
     }
-})
+});
 
 export default DetailPage
+
+
+

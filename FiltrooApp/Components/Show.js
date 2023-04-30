@@ -1,27 +1,36 @@
+import { useNavigation } from "@react-navigation/native"
 import TextStyles from "./StyleText"
-import { View, Image, Button, StyleSheet } from "react-native"
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native"
 
-const Show = ({ item, navigation }) => (
+const Show = ({ item }) => {
 
-    <View style={styles.container}>
-        <TextStyles fontSize="tittle">{item.name}</TextStyles>
-        <TextStyles fontSize="subtittle">{item.rating.average}</TextStyles>
-        <TextStyles fontSize="description">{item.genres.join(", ")}</TextStyles>
-        <View style={styles.image}>
-            <Image
-                source={item.image.medium}
-                style={{ width: 400, height: 400 }}
-                resizeMode="contain"
-            />
+    const navigation = useNavigation()
+
+    const handlePress = () => {
+        navigation.navigate('Details', { id: item.id })
+    }
+
+    return (
+
+        <View style={styles.container}>
+            <TextStyles fontSize="tittle">{item.name}</TextStyles>
+            <TextStyles fontSize="subtittle">{item.rating.average}</TextStyles>
+            <TextStyles fontSize="description">{item.genres.join(", ")}</TextStyles>
+            <View style={styles.image}>
+                <Image
+                    source={item.image.medium}
+                    style={{ width: 400, height: 400 }}
+                    resizeMode="contain"
+                />
+            </View>
+            <TouchableOpacity
+                onPress={handlePress}
+                style={buttonStyles.button}>
+                <Text style={buttonStyles.text}>Ver Detalles</Text>
+            </TouchableOpacity>
         </View>
-        <Button style={styles.button}
-            onPress={() => navigation.navigate('Details', { id: item.id })}
-            title="Ver Detalles"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-        />
-    </View>
-)
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -38,5 +47,21 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     }
 })
+
+const buttonStyles = StyleSheet.create({
+    button: {
+        backgroundColor: '#ED860A',
+        padding: 10,
+        borderRadius: 5,
+        width: 250,
+        alignSelf: "center"
+    },
+    text: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+});
 
 export default Show

@@ -3,7 +3,7 @@ import List from '../Components/ShowList'
 import apiServices from "../services/api.services"
 import { useEffect, useState } from 'react'
 
-const ListPage = ({ navigation }) => {
+const ListPage = () => {
 
     const [shows, setShows] = useState([])
     const [loading, setLoading] = useState(false)
@@ -33,7 +33,6 @@ const ListPage = ({ navigation }) => {
     return (
         <View>
             <List
-                navigation={navigation}
                 shows={shows}
                 loading={loading}
                 handleRefresh={handleRefresh}

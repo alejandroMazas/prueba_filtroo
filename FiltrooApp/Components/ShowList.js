@@ -1,9 +1,8 @@
-import { useState } from "react"
 import { FlatList, View, StyleSheet, RefreshControl } from "react-native"
 import Spinner from "./Spinner"
 import Item from "./Show"
 
-const ShowList = ({ navigation, loading, shows, handleRefresh, isRefreshing }) => {
+const ShowList = ({ loading, shows, handleRefresh, isRefreshing }) => {
 
     return (
         <View style={styles.background}>
@@ -15,7 +14,7 @@ const ShowList = ({ navigation, loading, shows, handleRefresh, isRefreshing }) =
                         data={shows}
                         // columnWrapperStyle={{ justifyContent: 'space-around' }}
                         // numColumns={2}
-                        renderItem={({ item }) => <Item navigation={navigation} item={item} />}
+                        renderItem={({ item }) => <Item item={item} />}
                         keyExtractor={item => item.id.toString()}
                         refreshControl={
                             <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />

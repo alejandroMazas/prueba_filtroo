@@ -2,7 +2,6 @@ import { View } from 'react-native'
 import List from '../Components/ShowList'
 import apiServices from "../services/api.services"
 import { useEffect, useState } from 'react'
-import Spinner from '../Components/Spinner'
 
 const ListPage = () => {
 
@@ -13,10 +12,9 @@ const ListPage = () => {
 
     useEffect(() => {
         loadShows()
-    }, [])
+    }, [page])
 
     const handleLoadMore = () => {
-        console.log("gfhbjklñ")
         setPage(page + 1);
     };
 
@@ -40,7 +38,7 @@ const ListPage = () => {
     return (
         <View>
             <List
-                shows={shows.slice(0, 15)}
+                shows={shows}
                 loading={loading}
                 onEndReached={handleLoadMore}
                 handleRefresh={handleRefresh}

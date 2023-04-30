@@ -18,7 +18,7 @@ const Show = ({ item }) => {
             <TextStyles fontSize="description">{item.genres.join(", ")}</TextStyles>
             <View style={styles.image}>
                 <Image
-                    source={item.image.medium}
+                    source={{ uri: item.image.medium }}
                     style={{ width: 400, height: 400 }}
                     resizeMode="contain"
                 />

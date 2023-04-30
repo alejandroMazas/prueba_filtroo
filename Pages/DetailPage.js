@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native"
+import { View, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native"
 import apiServices from "../services/api.services"
 import { useState, useEffect } from "react"
 import TextStyles from "../Components/StyleText"
@@ -39,29 +39,31 @@ const DetailPage = ({ route }) => {
             ?
             <Spinner />
             :
-            <View style={styles.container}>
-                <View style={styles.image}>
-                    <TouchableOpacity onPress={clickableImage}>
-                        <Image
-                            source={show?.image?.medium}
-                            style={{ width: 400, height: 400 }}
-                            resizeMode="contain"
-                        />
-                    </TouchableOpacity>
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.image}>
+                        <TouchableOpacity onPress={clickableImage}>
+                            <Image
+                                source={{ uri: show?.image?.medium }}
+                                style={{ width: 400, height: 400 }}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    {show && (
+                        <>
+                            <TextStyles fontSize="tittle">{show.name}</TextStyles>
+                            <TextStyles fontSize="subtittle">{show.rating?.average}</TextStyles>
+                            <TextStyles fontSize="description">{show.genres?.join(", ")}</TextStyles>
+                            <TextStyles fontSize="description">Sinopsis</TextStyles>
+                            <TextStyles fontSize="body">{show.summary?.replace(/(<([^>]+)>)/ig, '')}</TextStyles>
+                            <TextStyles fontSize="description">Estreno {show.premiered}</TextStyles>
+                            <TextStyles fontSize="description">Finalización {show.premiered}</TextStyles>
+                            <TextStyles fontSize="body">Idioma: {show.language}</TextStyles>
+                        </>
+                    )}
                 </View>
-                {show && (
-                    <>
-                        <TextStyles fontSize="tittle">{show.name}</TextStyles>
-                        <TextStyles fontSize="subtittle">{show.rating?.average}</TextStyles>
-                        <TextStyles fontSize="description">{show.genres?.join(", ")}</TextStyles>
-                        <TextStyles fontSize="description">Sinopsis</TextStyles>
-                        <TextStyles fontSize="body">{show.summary?.replace(/(<([^>]+)>)/ig, '')}</TextStyles>
-                        <TextStyles fontSize="description">Estreno {show.premiered}</TextStyles>
-                        <TextStyles fontSize="description">Finalización {show.premiered}</TextStyles>
-                        <TextStyles fontSize="body">Idioma: {show.language}</TextStyles>
-                    </>
-                )}
-            </View>
+            </ScrollView>
     )
 }
 

@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native"
-import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native"
+import { Text, View, TouchableOpacity, StyleSheet, Image, ScrollView } from "react-native"
 import TextStyles from "../Components/StyleText"
 
 const Home = () => {
@@ -11,21 +11,23 @@ const Home = () => {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.image}>
-                <TextStyles style={{ alignSelf: "center" }} fontSize="logo">ShowTime</TextStyles>
+        <ScrollView>
+            <View style={styles.container}>
+                <View style={styles.image}>
+                    <TextStyles style={{ alignSelf: "center" }} fontSize="logo">ShowTime</TextStyles>
+                </View>
+                <Image
+                    source={require("../assets/posters.png")}
+                    style={{ width: 500, height: 500 }}
+                    resizeMode="contain"
+                />
+                <TouchableOpacity
+                    onPress={handlePress}
+                    style={buttonStyles.button}>
+                    <Text style={buttonStyles.text}>Ir a la lista</Text>
+                </TouchableOpacity>
             </View>
-            <Image
-                source={require("../assets/posters.png")}
-                style={{ width: 500, height: 500 }}
-                resizeMode="contain"
-            />
-            <TouchableOpacity
-                onPress={handlePress}
-                style={buttonStyles.button}>
-                <Text style={buttonStyles.text}>Ir a la lista</Text>
-            </TouchableOpacity>
-        </View>
+        </ScrollView>
     )
 }
 
